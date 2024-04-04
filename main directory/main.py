@@ -69,6 +69,8 @@ def book_a_flight_function():
     # Should also add a customers details to bookings.txt. 
     # Going to create the flight_data.txt file now. 
     
+    print("Yay, you found function 1!")
+    
 
 def review_booking_function():
     # Creating the fuction for option 2 in the menu. 
