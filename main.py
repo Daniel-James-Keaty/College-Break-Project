@@ -31,6 +31,7 @@ def main():
         print("4) Exit")
         
         # Handle User Input.
+        # NB might need to ad better input validation here. 
         user_menu_selection = int(input("Please select an option (1-4): "))
         
         if user_menu_selection == 1:
@@ -39,7 +40,7 @@ def main():
             break
             
         elif user_menu_selection == 2:
-            review_booking_function
+            review_booking_function()
             
             break
             
@@ -72,8 +73,8 @@ def review_booking_function():
     # Uses the same thing to grab the path to the bookings.txt file. 
     booking_file_path = os.path.join(current_directory, "bookings.txt")
     
-    print("Booking function found, yay!")
-    # Currently having trouble as this function is being called properly. 
+    # print("Booking function found, yay!")
+    # Currently having trouble as this function isn't being called properly. 
     
     
     if os.path.isfile(booking_file_path):
@@ -88,8 +89,8 @@ def review_booking_function():
         
     
     
-    
-    input(int("Please enter your booking number: "))
+    # NB might need to add more input validation here. 
+    int(input(("Please enter your booking number: ")))
     print("Thank you.")
     
     
