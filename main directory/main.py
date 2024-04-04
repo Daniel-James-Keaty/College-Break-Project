@@ -62,6 +62,13 @@ def main():
 
 
     #print ("Please select an option;")
+    
+def book_a_flight_function():
+    # Creating the function for option 1 in the main menu. 
+    # On booking, should deduct one available seat from flight_data.txt . 
+    # Should also add a customers details to bookings.txt. 
+    # Going to create the flight_data.txt file now. 
+    
 
 def review_booking_function():
     # Creating the fuction for option 2 in the menu. 
@@ -93,6 +100,7 @@ def review_booking_function():
     int(input(("Please enter your booking number: ")))
     print("Thank you.")
     
+    # Going to work on the funtion for booking flights now, will return here later. 
     
     
     
