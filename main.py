@@ -27,7 +27,32 @@ def main():
         # Handle User Input
         user_menu_selection = int(input("Please select an option (1-4): "))
         
-        
+        if user_menu_selection == 1:
+            print ("Placeholder where function 1 goes")
+            
+            break
+            
+        elif user_menu_selection == 2:
+            print ("Placeholder where function 2 goes")
+            
+            break
+            
+        elif user_menu_selection == 3:
+            print ("Placeholder where function 3 goes")
+            
+            break
+            
+        elif user_menu_selection == 4:
+            # Exit program
+            print ("Exiting Program...")
+            
+            break
+            
+        else:
+            # Handles Invalid choices
+            print("Invalid choice. Please try again.")
+            
+
 
     #print ("Please select an option;")
 
