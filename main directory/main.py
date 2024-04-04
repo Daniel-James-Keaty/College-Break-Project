@@ -100,7 +100,7 @@ def review_booking_function():
     int(input(("Please enter your booking number: ")))
     print("Thank you.")
     
-    # Going to work on the funtion for booking flights now, will return here later. 
+    # Going to work on the function for booking flights now, will return here later. 
     
     
     
