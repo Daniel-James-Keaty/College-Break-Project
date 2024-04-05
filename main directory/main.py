@@ -35,7 +35,7 @@ def main():
         user_menu_selection = int(input("Please select an option (1-4): "))
         
         if user_menu_selection == 1:
-            print ("Placeholder where function 1 goes")
+            book_a_flight_function()
             
             break
             
@@ -70,6 +70,30 @@ def book_a_flight_function():
     # Going to create the flight_data.txt file now. 
     
     print("Yay, you found function 1!")
+    while True:
+        customer_name = input("Please enter your name: ")
+        customer_name_length = len(customer_name)
+    
+        if customer_name_length >= 1 and customer_name_length <= 20:
+            return customer_name
+    
+        else:
+            print("Please enter a name between 1 and 20 characters long.")
+            continue
+        
+        
+        
+    
+    customer_contact_number = int(input("Please enter your contact number: "))
+    if customer_contact_number == 10:
+        return customer_contact_number
+    else:
+        print("Please enter a contact number 10 numbers long")
+        
+    
+    customer_departure_city = input("Please enter the city you wish to travel from: ")
+    customer_arrival_city = input("Please enter your the city you wish to travel to: ")
+    
     
 
 def review_booking_function():
