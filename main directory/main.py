@@ -14,6 +14,12 @@
 import os
 # Need this for checking if bookings.txt exists in the same directory as this file.
 
+current_directory = os.path.dirname(os.path.abspath(__file__))
+booking_file_path = os.path.join(current_directory, "bookings.txt")
+# After puling my hair out for ages to get the txt files to work, realised i need this to make it work. Might be due to me using linux though. 
+# This code should also make the code more platform agnostic since Linux, Windows and Mac have different directory structures. 
+
+
 from datetime import date
 from datetime import datetime
 # Need this to check if the date the customer wants to fly on, is valid. 
@@ -28,6 +34,7 @@ def main():
 
     while True:
     # Display Menu Options.
+    # TODO will add a secret option 5 here to reset the program and make debugging easier. 
         print("\n Menu")
         print("1) Book a Flight")
         print("2) Review Booking")
@@ -58,6 +65,8 @@ def main():
             print ("Exiting Program...")
             
             break
+        
+        # Option 5 will go here to reset the program. 
             
         else:
             # Handles Invalid choices.
@@ -73,11 +82,14 @@ def book_a_flight_function():
     # Should also add a customers details to bookings.txt. 
     # Going to create the flight_data.txt file now. 
     
-    print("Yay, you found function 1!")
+    # print("Yay, you found function 1!")
     while True:
+        # prompt the user to enter their name.
             customer_name = input("Please enter your name: ")
+            # Gets the length of the user's name.
             customer_name_length = len(customer_name)
-    
+            
+            # Checks to make sure the name is between 1 and 20 characters long. 
             if customer_name_length >= 1 and customer_name_length <= 20:
                 break
     
@@ -85,7 +97,9 @@ def book_a_flight_function():
                 print("Please enter a name between 1 and 20 characters long.")
                 
     while True:
+        # Prompt the user to enter a valid contact number.
             customer_contact_number = input("Please enter your contact number: ")
+            # Checks to make sure the number is 10 numbers long. 
             customer_contact_number_length = len(customer_contact_number)
         
             if customer_contact_number_length == 10:
@@ -100,7 +114,11 @@ def book_a_flight_function():
         
     
     customer_departure_city = input("Please enter the city you wish to travel from: ")
+    # TODO check to see that the departure city is valid 
+    
     customer_arrival_city = input("Please enter your the city you wish to travel to: ")
+    # TODO check to see that the arrival city is valid 
+
     
     while True:
         # Prompt the user to enter a valid date. 
@@ -110,13 +128,24 @@ def book_a_flight_function():
             customer_depart_date = datetime.strptime(customer_depart_date, "%d/%m/%Y")
             # Check to see if the date is in the future. 
             if customer_depart_date.date() >= datetime.now().date():
-                # If date is valid, return it.
-                return customer_depart_date
+                # 
+                break
             else:
                 print("Please enter a date in the future.")
         except ValueError:
             # If date is incorrect, reprompt user to enter a valid date. 
             print("Please enter a valid date in the format DD/MM/YYYY")
+            # The above code works. Don't touch lol. 
+            
+    print ("Testing to see if code reaches here....")        
+    with open (booking_file_path, "a") as file:
+        file.write(f"{customer_name},{customer_contact_number},{customer_departure_city},{customer_arrival_city},{customer_depart_date}\n")
+        # This fucking line refuses to cooperate. Jesus Christ.
+    print("program has read after the file open line wtf")
+    
+    
+        
+                
                 
     
     
@@ -149,7 +178,7 @@ def review_booking_function():
         
     
     
-    # NB might need to add more input validation here. 
+    # TODO might need to add more input validation here. 
     int(input(("Please enter your booking number: ")))
     print("Thank you.")
     
@@ -161,6 +190,6 @@ def review_booking_function():
 
 
 main()
-
+# 
 
 
