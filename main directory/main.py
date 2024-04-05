@@ -14,6 +14,10 @@
 import os
 # Need this for checking if bookings.txt exists in the same directory as this file.
 
+from datetime import date
+from datetime import datetime
+# Need this to check if the date the customer wants to fly on, is valid. 
+
 
 def main():
     # Creating main function.
@@ -97,6 +101,25 @@ def book_a_flight_function():
     
     customer_departure_city = input("Please enter the city you wish to travel from: ")
     customer_arrival_city = input("Please enter your the city you wish to travel to: ")
+    
+    while True:
+        # Prompt the user to enter a valid date. 
+        customer_depart_date = input("Please enter the date you wish to travel on (DD/MM/YYYY): ")
+        try:
+            # Try to convert the input to a datetime object. 
+            customer_depart_date = datetime.strptime(customer_depart_date, "%d/%m/%Y")
+            # Check to see if the date is in the future. 
+            if customer_depart_date.date() >= datetime.now().date():
+                # If date is valid, return it.
+                return customer_depart_date
+            else:
+                print("Please enter a date in the future.")
+        except ValueError:
+            # If date is incorrect, reprompt user to enter a valid date. 
+            print("Please enter a valid date in the format DD/MM/YYYY")
+                
+    
+    
     
     
 
