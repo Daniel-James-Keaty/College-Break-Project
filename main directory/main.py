@@ -71,7 +71,6 @@ def main():
             # Handles Invalid choices.
             print("Invalid choice. Please try again.")
             
-            
                 
 def book_a_flight_function():
     # Creating the function for option 1 in the main menu. 
@@ -205,8 +204,8 @@ def review_booking_function():
             print("Returning to main menu.")
             break
             # Should take user back to the main menu if they enter 1
- 
-    
+
+
 def manage_passenger_details():
     while True:
     # right, it's sunday, im medicated to the f*****g gills. time to dive in here and get this part done. 
@@ -269,13 +268,6 @@ def manage_passenger_details():
 
             break
         
-        
-        
-
-        
-        
-        
-    
 
 main()
 # Main function
