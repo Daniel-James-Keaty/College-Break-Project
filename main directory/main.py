@@ -16,6 +16,7 @@ import os
 
 current_directory = os.path.dirname(os.path.abspath(__file__))
 booking_file_path = os.path.join(current_directory, "bookings.txt")
+flight_data_file_path = os.path.join(current_directory, "flight_data.txt")
 # After puling my hair out for ages to get the txt files to work, realised i need this to make it work. Might be due to me using linux though. 
 # This code should also make the code more platform agnostic since Linux, Windows and Mac have different directory structures. 
 
@@ -56,8 +57,7 @@ def main():
             break
             
         elif user_menu_selection == 3:
-            print ("Placeholder where function 3 goes")
-            
+            manage_passenger_details()            
             break
             
         elif user_menu_selection == 4:
@@ -112,6 +112,16 @@ def book_a_flight_function():
                 print("Please enter a contact number 10 numbers long")
             
         
+    def check_available_flights():
+        # Gonna make this a nested fuction becuase I hate myself. 
+        with open (flight_data_file_path, 'r') as flight_data_file:
+            available_departure_cities = [line.strip().split(',')[1] for line in flight_data_file.readlines()]
+    
+    # Christ, fuck this, im taking a break, i dont know how best to implement this yet. I cant think.
+    
+    
+    
+    
     
     customer_departure_city = input("Please enter the city you wish to travel from: ")
     # TODO check to see that the departure city is valid 
@@ -149,6 +159,7 @@ def book_a_flight_function():
                 
     
     
+
     
     
 
@@ -186,8 +197,22 @@ def review_booking_function():
     
     
     
-
-
+def manage_passenger_details():
+    # right, it's sunday, im medicated to the fucking gills. time to dive in here and get this part done. 
+    passenger_name = input("Please enter the name of the passenger: ")
+    booking_file_path = os.path.join(current_directory, "bookings.txt")
+    booked_passengers = []
+    with open (booking_file_path, 'r') as file:
+        for line in file:
+            booking_info = line.strip().split(',')
+            customer_name = booking_info[0].strip()
+            booked_passengers.append(customer_name)
+    
+    if passenger_name in booked_passengers:
+                print(f"{passenger_name} has a booking.")
+    else:
+        print(f"{passenger_name} does not have a booking.")
+    
 
 main()
 # 
