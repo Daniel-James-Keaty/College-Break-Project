@@ -150,6 +150,8 @@ def book_a_flight_function():
     
 
 def review_booking_function():
+
+
     while True:
     # Creating the fuction for option 2 in the menu. 
     # Will be able to review bookings and interact with bookings.txt file.
@@ -167,24 +169,43 @@ def review_booking_function():
         if os.path.isfile(booking_file_path):
             print("Booking file found...initialising!")
             # Should print if bookings.txt file already exists
-        
         else:
             print("Booking file not found...creating file now")
             # Should print if bookings.txt file doesn't exist.
-        with open(booking_file_path, "w") as file:
-            pass
-        print("File has now been created!")
-        
-        
-    
-    
-        # TODO might need to add more input validation here. 
-        int(input(("Please enter your booking number: ")))
-        print("Thank you.")
+            with open(booking_file_path, "w") as file:    
+                pass    
+
+        search_contact_number = input("Please enter contact number: ")
+
+        found = False
+        with open(booking_file_path, "r") as file:
+            next(file)
+            for line in file:
+                fields = line.strip().split(",")
+                if len(fields) >= 5:
+                    if search_contact_number in fields[1]: 
+                        # Check if the contact number is in the second field
+                        print("Found the booking: ")
+                        print("Name         | Contact Number | Departure City | Arrival City | Departure Date")
+                        print("-" * 80)  
+                        # Print a line separator
+
+                        # Split the line into fields
+                        fields = line.strip().split(",")
+                        # Print each field with formatting
+                        print(f"{fields[0]:<13}| {fields[1]:<15}| {fields[2]:<15}| {fields[3]:<13}| {fields[4]:<15}")
+                        found = True
+            if not found:
+                print("Booking not found.")
+
         print()
-        print("Returning to main menu.")
-        break    
-    
+        print()
+        menu_prompt = input("Please input 1 to return to the main menu: ")
+        if menu_prompt == "1":
+            print("Returning to main menu.")
+            break
+            # Should take user back to the main menu if they enter 1
+ 
     
 def manage_passenger_details():
     while True:
@@ -197,7 +218,7 @@ def manage_passenger_details():
                 booking_info = line.strip().split(',')
                 customer_name = booking_info[0].strip()
                 booked_passengers.append(customer_name)
-                # This code took a lot of messing around with to get it working. Seems to work okay now. Should get passenger infor from text file and make it appear nicely here.
+                # This code took a lot of messing around with to get it working. Seems to work okay now. Should get passenger info from text file and make it appear nicely here.
                 print()
     
                 if booking_info[0].strip() == passenger_name:
@@ -214,7 +235,7 @@ def manage_passenger_details():
                 # Print data
                 for info in booking_info:
                     print(f"{info:<20}", end="")  
-                    # Left-align data with a width of 20 characters
+                    # Left-align datflight_data_file_path = os.path.join(current_directory, "flight_data.txt")a with a width of 20 characters
                 print()  
                 # New line
                 
@@ -243,11 +264,14 @@ def manage_passenger_details():
                 
                 
         else:
-            print(f"{passenger_name} does not have a booking.")
+            print(f"{passenger_name} does not have a booking, Please go to option 2 in the main menu to book a flight.")
             print()
+
+            break
         
         
         
+
         
         
         
@@ -255,6 +279,10 @@ def manage_passenger_details():
 
 main()
 # Main function
+
+
+# Need to include some docstrings
+
 
 
 

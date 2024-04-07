@@ -1,0 +1,2 @@
+customer_name, contact_number, departure_city, arrival_city, booking_date
+Dan,1234567890,abc,xyz,2024-11-11 00:00:00
