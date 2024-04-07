@@ -212,18 +212,19 @@ def manage_passenger_details():
         passenger_name = input("Please enter the name of the passenger: ")
         booking_file_path = os.path.join(current_directory, "bookings.txt")
         booked_passengers = []
+
         with open (booking_file_path, 'r') as file:
+            next(file)
             for line in file:
                 booking_info = line.strip().split(',')
                 customer_name = booking_info[0].strip()
                 booked_passengers.append(customer_name)
                 # This code took a lot of messing around with to get it working. Seems to work okay now. Should get passenger info from text file and make it appear nicely here.
                 print()
-    
-                if booking_info[0].strip() == passenger_name:
+
+                if customer_name == passenger_name:
                     # Format the booking details into a table
                     headers = ["Customer Name", "Contact Number", "Departing From", "Arriving To", "Date of Departure"]
-                
                     # Print headers
                     for header in headers:
                         print(f"{header:<20}", end="")  
@@ -235,39 +236,28 @@ def manage_passenger_details():
                 for info in booking_info:
                     print(f"{info:<20}", end="")  
                     # Left-align datflight_data_file_path = os.path.join(current_directory, "flight_data.txt")a with a width of 20 characters
-                print()  
-                # New line
-                
-                return  
+                print()    
             # Stop after finding the matching passenger name
             
         print()
         print("Returning to main menu.")
         # Gonna try using these, while True and break statements to stop the program from exiting prematurely. 
         break
-
-    
     
     while True:
         if passenger_name in booked_passengers:
                 print(f"{passenger_name} has a booking.")
-                
                 print(f"Please see the passenger details below")
                 print()
-                menu_prompt = input("Please input 1 to return to the main menu")
+                menu_prompt = input("Please input 1 to return to the main menu: ")
                 if menu_prompt == "1":
                     break
                 # Should take user back to the main menu if they enter 1
                 
-
-                
-                
         else:
             print(f"{passenger_name} does not have a booking, Please go to option 2 in the main menu to book a flight.")
             print()
-
             break
-        
 
 main()
 # Main function
