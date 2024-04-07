@@ -1,2 +1,0 @@
-Customer_name, Contact_Number, Departing_from, Arriving_To, Date of Departure,
-dan,1234567890,dan,dan,2024-11-11 00:00:00

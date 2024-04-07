@@ -2,9 +2,6 @@
 # Purpose: Modular Programming Project 
 # Date: 04 - April - 2024
 
-# print ("Hello World")
-# I didnt realise this was still in here lol. Carry over from when I made the file and wanted to check everything was working.
-
 # Okay so I am doing the project for the college break. 
 # It will be submitted for graded next week. Im using VScode on Fedora Linux, and Github for the first time. 
 # The learning curve is steep but hopefully, itl be worth it lol.
@@ -41,6 +38,8 @@ def main():
         print("2) Review Booking")
         print("3) Manage Passenger Details")
         print("4) Exit")
+        print()
+        print()
         
         # Handle User Input.
         # NB might need to ad better input validation here. 
@@ -48,42 +47,40 @@ def main():
         
         if user_menu_selection == 1:
             book_a_flight_function()
+            # Takes user to book a flight
             
-            break
+            
             
         elif user_menu_selection == 2:
             review_booking_function()
+            # Takes user to review their booking.
             
-            break
+            
             
         elif user_menu_selection == 3:
-            manage_passenger_details()            
-            break
+            manage_passenger_details()     
+            # Takes user to review their booking.       
+            
             
         elif user_menu_selection == 4:
             # Exits program.
             print ("Exiting Program...")
-            
             break
-        
-        # Option 5 will go here to reset the program. 
-            
+                        
         else:
             # Handles Invalid choices.
             print("Invalid choice. Please try again.")
             
-
-
-    #print ("Please select an option;")
-    
+            
+                
 def book_a_flight_function():
     # Creating the function for option 1 in the main menu. 
     # On booking, should deduct one available seat from flight_data.txt . 
     # Should also add a customers details to bookings.txt. 
     # Going to create the flight_data.txt file now. 
     
-    # print("Yay, you found function 1!")
     while True:
+        while True:
         # prompt the user to enter their name.
             customer_name = input("Please enter your name: ")
             # Gets the length of the user's name.
@@ -96,7 +93,7 @@ def book_a_flight_function():
             else:
                 print("Please enter a name between 1 and 20 characters long.")
                 
-    while True:
+        while True:
         # Prompt the user to enter a valid contact number.
             customer_contact_number = input("Please enter your contact number: ")
             # Checks to make sure the number is 10 numbers long. 
@@ -112,76 +109,68 @@ def book_a_flight_function():
                 print("Please enter a contact number 10 numbers long")
             
         
-    def check_available_flights():
+        def check_available_flights():
+            # TODO make this function work lol
         # Gonna make this a nested fuction becuase I hate myself. 
-        with open (flight_data_file_path, 'r') as flight_data_file:
-            available_departure_cities = [line.strip().split(',')[1] for line in flight_data_file.readlines()]
-    
-    # Christ, fuck this, im taking a break, i dont know how best to implement this yet. I cant think.
+            with open (flight_data_file_path, 'r') as flight_data_file:
+                available_departure_cities = [line.strip().split(',')[1] for line in flight_data_file.readlines()]    
     
     
+        customer_departure_city = input("Please enter the city you wish to travel from: ")
+        # TODO check to see that the departure city is valid 
     
-    
-    
-    customer_departure_city = input("Please enter the city you wish to travel from: ")
-    # TODO check to see that the departure city is valid 
-    
-    customer_arrival_city = input("Please enter your the city you wish to travel to: ")
-    # TODO check to see that the arrival city is valid 
+        customer_arrival_city = input("Please enter your the city you wish to travel to: ")
+        # TODO check to see that the arrival city is valid 
 
     
-    while True:
-        # Prompt the user to enter a valid date. 
-        customer_depart_date = input("Please enter the date you wish to travel on (DD/MM/YYYY): ")
-        try:
-            # Try to convert the input to a datetime object. 
-            customer_depart_date = datetime.strptime(customer_depart_date, "%d/%m/%Y")
-            # Check to see if the date is in the future. 
-            if customer_depart_date.date() >= datetime.now().date():
-                # 
-                break
-            else:
-                print("Please enter a date in the future.")
-        except ValueError:
+        while True:
+            # Prompt the user to enter a valid date. 
+            customer_depart_date = input("Please enter the date you wish to travel on (DD/MM/YYYY): ")
+            try:
+                # Try to convert the input to a datetime object. 
+                customer_depart_date = datetime.strptime(customer_depart_date, "%d/%m/%Y")
+                # Check to see if the date is in the future. 
+                if customer_depart_date.date() >= datetime.now().date():
+                    break
+                else:
+                    print("Please enter a date in the future.")
+            except ValueError:
             # If date is incorrect, reprompt user to enter a valid date. 
-            print("Please enter a valid date in the format DD/MM/YYYY")
+                print("Please enter a valid date in the format DD/MM/YYYY")
             # The above code works. Don't touch lol. 
             
-    print ("Testing to see if code reaches here....")        
-    with open (booking_file_path, "a") as file:
-        file.write(f"{customer_name},{customer_contact_number},{customer_departure_city},{customer_arrival_city},{customer_depart_date}\n")
-        # This fucking line refuses to cooperate. Jesus Christ.
-    print("program has read after the file open line wtf")
-    
-    
-        
-                
-                
-    
-    
-
-    
+        print ("Testing to see if code reaches here....")        
+        with open (booking_file_path, "a") as file:
+            file.write(f"{customer_name},{customer_contact_number},{customer_departure_city},{customer_arrival_city},{customer_depart_date}\n")
+            # This line was being uncooperative. Dont touch lol.
+        print("program has read after the file open line wtf")
+        print()
+        print("Thank you for booking, Returning to main menu.")
+        break
     
 
 def review_booking_function():
+    while True:
     # Creating the fuction for option 2 in the menu. 
     # Will be able to review bookings and interact with bookings.txt file.
     
     # From what I understand, this uses import.os to grab current directory. 
-    current_directory = os.path.dirname(os.path.realpath(__file__))
+        current_directory = os.path.dirname(os.path.realpath(__file__))
     
     # Uses the same thing to grab the path to the bookings.txt file. 
-    booking_file_path = os.path.join(current_directory, "bookings.txt")
+        booking_file_path = os.path.join(current_directory, "bookings.txt")
     
     # print("Booking function found, yay!")
     # Currently having trouble as this function isn't being called properly. 
     
     
-    if os.path.isfile(booking_file_path):
-        print("Booking file found...initialising!")
+        if os.path.isfile(booking_file_path):
+            print("Booking file found...initialising!")
+            # Should print if bookings.txt file already exists
         
-    else:
-        print("Booking file not found...creating file now")
+        else:
+            print("Booking file not found...creating file now")
+            # Should print if bookings.txt file doesn't exist.
         with open(booking_file_path, "w") as file:
             pass
         print("File has now been created!")
@@ -189,32 +178,83 @@ def review_booking_function():
         
     
     
-    # TODO might need to add more input validation here. 
-    int(input(("Please enter your booking number: ")))
-    print("Thank you.")
-    
-    # Going to work on the function for booking flights now, will return here later. 
-    
+        # TODO might need to add more input validation here. 
+        int(input(("Please enter your booking number: ")))
+        print("Thank you.")
+        print()
+        print("Returning to main menu.")
+        break    
     
     
 def manage_passenger_details():
-    # right, it's sunday, im medicated to the fucking gills. time to dive in here and get this part done. 
-    passenger_name = input("Please enter the name of the passenger: ")
-    booking_file_path = os.path.join(current_directory, "bookings.txt")
-    booked_passengers = []
-    with open (booking_file_path, 'r') as file:
-        for line in file:
-            booking_info = line.strip().split(',')
-            customer_name = booking_info[0].strip()
-            booked_passengers.append(customer_name)
+    while True:
+    # right, it's sunday, im medicated to the f*****g gills. time to dive in here and get this part done. 
+        passenger_name = input("Please enter the name of the passenger: ")
+        booking_file_path = os.path.join(current_directory, "bookings.txt")
+        booked_passengers = []
+        with open (booking_file_path, 'r') as file:
+            for line in file:
+                booking_info = line.strip().split(',')
+                customer_name = booking_info[0].strip()
+                booked_passengers.append(customer_name)
+                # This code took a lot of messing around with to get it working. Seems to work okay now. Should get passenger infor from text file and make it appear nicely here.
+                print()
     
-    if passenger_name in booked_passengers:
+                if booking_info[0].strip() == passenger_name:
+                    # Format the booking details into a table
+                    headers = ["Customer Name", "Contact Number", "Departing From", "Arriving To", "Date of Departure"]
+                
+                    # Print headers
+                    for header in headers:
+                        print(f"{header:<20}", end="")  
+                        # Left-align headers with a width of 20 characters
+                print()  
+                # New line
+                
+                # Print data
+                for info in booking_info:
+                    print(f"{info:<20}", end="")  
+                    # Left-align data with a width of 20 characters
+                print()  
+                # New line
+                
+                return  
+            # Stop after finding the matching passenger name
+            
+        print()
+        print("Returning to main menu.")
+        # Gonna try using these, while True and break statements to stop the program from exiting prematurely. 
+        break
+
+    
+    
+    while True:
+        if passenger_name in booked_passengers:
                 print(f"{passenger_name} has a booking.")
-    else:
-        print(f"{passenger_name} does not have a booking.")
+                
+                print(f"Please see the passenger details below")
+                print()
+                menu_prompt = input("Please input 1 to return to the main menu")
+                if menu_prompt == "1":
+                    break
+                # Should take user back to the main menu if they enter 1
+                
+
+                
+                
+        else:
+            print(f"{passenger_name} does not have a booking.")
+            print()
+        
+        
+        
+        
+        
+        
     
 
 main()
-# 
+# Main function
+
 
 
