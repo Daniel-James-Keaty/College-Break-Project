@@ -37,7 +37,13 @@ def main():
         print("1) Book a Flight")
         print("2) Review Booking")
         print("3) Manage Passenger Details")
-        print("4) Exit")
+        
+        print("4) Cancel Booking")
+        
+        # Adding this bit for part 2 of the project. 
+        
+        
+        print("5) Exit")
         print()
         print()
         
@@ -63,9 +69,15 @@ def main():
             
             
         elif user_menu_selection == 4:
+            cancel_user_booking(booking_file_path)     
+            # Takes user to review their booking.     
+            
+        elif user_menu_selection == 5:
             # Exits program.
             print ("Exiting Program...")
             break
+        
+        
                         
         else:
             # Handles Invalid choices.
@@ -109,12 +121,20 @@ def book_a_flight_function():
             else:
                 print("Please enter a contact number 10 numbers long")
             
+            
+            
+            
+            
+            
+            
+            
+            
         
-        def check_available_flights():
+        # def check_available_flights():
             # TODO make this function work lol
         # Gonna make this a nested fuction becuase I hate myself. 
-            with open (flight_data_file_path, 'r') as flight_data_file:
-                available_departure_cities = [line.strip().split(',')[1] for line in flight_data_file.readlines()]    
+            # with open (flight_data_file_path, 'r') as flight_data_file:
+             #   available_departure_cities = [line.strip().split(',')[1] for line in flight_data_file.readlines()]    
     
     
         customer_departure_city = input("Please enter the city you wish to travel from: ")
@@ -129,7 +149,7 @@ def book_a_flight_function():
             customer_depart_date = input("Please enter the date you wish to travel on (DD/MM/YYYY): ")
             try:
                 # Try to convert the input to a datetime object. 
-                customer_depart_date = datetime.strptime(customer_depart_date, "%d/%m/%Y")
+                customer_depart_date = datetime.strtime(customer_depart_date.split()[0], "%d/%m/%Y")
                 # Check to see if the date is in the future. 
                 if customer_depart_date.date() >= datetime.now().date():
                     break
@@ -266,6 +286,39 @@ def manage_passenger_details():
             print(f"{passenger_name} does not have a booking, Please go to option 2 in the main menu to book a flight.")
             print()
             break
+
+
+def cancel_user_booking(booking_file_path):
+    '''
+    This function is option 4 in the main menu, will allow a user to cancel their booking. 
+    '''
+    
+    found = False
+    
+    contact_number_for_cancel = int(input("Please eneter your contact number: "))
+    
+    with open (booking_file_path, 'r') as file:
+        lines = file.readlines()
+            
+            
+            
+    with open(booking_file_path, 'w') as file:
+        for line in lines:
+            booking_info = line.strip().split(',')
+            if booking_info[1].strip() == str(contact_number_for_cancel):
+                found = True
+                print("Booking found, cancelling...")
+                
+            else:
+                file.write(line)
+                   
+        if not found:
+            print("Booking mot found with the provided contact number.")
+            
+        else:
+            print("Booking cancelled successfully.")
+            
+
 
 main()
 '''

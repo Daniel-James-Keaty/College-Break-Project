@@ -1,7 +1,7 @@
-Flight_Number, Departing_City, Arrival_City, Seats_Available
-EI101, Dublin, Paris, 99
-EI102, Cork, London, 89
-EI103, Dublin, New York, 149
-EI104, Cork, Amsterdam, 124
-EI105, Dublin, Toronto, 79
+Flight_Number,Departing_City,Arrival_City,Seats_Available
+EI101,Dublin,Paris,99
+EI102,Cork,London, 89
+EI103,Dublin,New York,149
+EI104,Cork,Amsterdam,124
+EI105,Dublin,Toronto,79
 
