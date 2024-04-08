@@ -5,6 +5,7 @@
 # It will be submitted for graded next week. Im using VScode on Fedora Linux, and Github for the first time. 
 # The learning curve is steep but hopefully, itl be worth it lol.
 # I made a flow chart last week outlining how I aim to tackle the project and how it should work. That is also on the Github page. 
+# To see the history and git commits, see my Github repo (https://github.com/Daniel-James-Keaty/College-Break-Project/tree/main)
 import os
 # Need this for checking if bookings.txt exists in the same directory as this file.
 current_directory = os.path.dirname(os.path.abspath(__file__))
