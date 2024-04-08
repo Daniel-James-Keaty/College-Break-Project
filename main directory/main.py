@@ -27,7 +27,6 @@ def main():
     print("Please select an option from the menu below")
     while True:
     # Display Menu Options.
-    # TODO will add a secret option 5 here to reset the program and make debugging easier. 
         print("\n Menu")
         print("1) Book a Flight")
         print("2) Review Booking")
@@ -37,7 +36,7 @@ def main():
         print("5) Exit")
         print()
         print()
-        # Handle User Input.
+        # New line
         user_menu_selection = int(input("Please select an option (1-4): "))
         if user_menu_selection == 1:
             book_a_flight_function()
@@ -114,6 +113,7 @@ def book_a_flight_function():
             file.write(f"{customer_name},{customer_contact_number},{customer_departure_city},{customer_arrival_city},{customer_depart_date}\n")
             # This line was being uncooperative. Dont touch lol.
         print()
+        # New line
         break
     
 
@@ -157,6 +157,7 @@ def review_booking_function():
                 print("Booking not found.")
         print()
         print()
+        # New line
         menu_prompt = input("Please input 1 to return to the main menu: ")
         if menu_prompt == "1":
             print("Returning to main menu.")
@@ -184,6 +185,7 @@ def manage_passenger_details():
                 booked_passengers.append(customer_name)
                 # This code took a lot of messing around with to get it working. Seems to work okay now. Should get passenger info from text file and make it appear nicely here.
                 print()
+                # New line
                 if customer_name == passenger_name:
                     # Format the booking details into a table
                     headers = ["Customer Name", "Contact Number", "Departing From", "Arriving To", "Date of Departure"]
@@ -208,6 +210,7 @@ def manage_passenger_details():
                 print(f"{passenger_name} has a booking.")
                 print(f"Please see the passenger details below")
                 print()
+                # New line
                 menu_prompt = input("Please input 1 to return to the main menu: ")
                 if menu_prompt == "1":
                     break
@@ -215,6 +218,7 @@ def manage_passenger_details():
         else:
             print(f"{passenger_name} does not have a booking, Please go to option 2 in the main menu to book a flight.")
             print()
+            # New line
             break
 
 
