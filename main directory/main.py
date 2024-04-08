@@ -73,10 +73,12 @@ def main():
             
                 
 def book_a_flight_function():
-    # Creating the function for option 1 in the main menu. 
-    # On booking, should deduct one available seat from flight_data.txt . 
-    # Should also add a customers details to bookings.txt. 
-    # Going to create the flight_data.txt file now. 
+    '''
+    This is the function for option 1 in the main menu. 
+    On booking, should deduct one available seat from flight_data.txt . 
+    Should also add a customers details to bookings.txt. 
+    Going to create the flight_data.txt file now. 
+    '''
     
     while True:
         while True:
@@ -149,12 +151,13 @@ def book_a_flight_function():
     
 
 def review_booking_function():
+    ''''
+    Lets users view, interact with their booking in bookings.txt
+    Option 2 in the manin menu.
+    '''
 
 
     while True:
-    # Creating the fuction for option 2 in the menu. 
-    # Will be able to review bookings and interact with bookings.txt file.
-    
     # From what I understand, this uses import.os to grab current directory. 
         current_directory = os.path.dirname(os.path.realpath(__file__))
     
@@ -207,8 +210,13 @@ def review_booking_function():
 
 
 def manage_passenger_details():
+    '''
+    This function checks if a users booking exists by checking the name they used in the booking. 
+    Diplays the inofrmation in a nice table. 
+    If a booking under the entered name does not exist, it prompts the user to go to the main menu and book there with
+    option 1.
+    '''
     while True:
-    # right, it's sunday, im medicated to the f*****g gills. time to dive in here and get this part done. 
         passenger_name = input("Please enter the name of the passenger: ")
         booking_file_path = os.path.join(current_directory, "bookings.txt")
         booked_passengers = []
@@ -260,10 +268,9 @@ def manage_passenger_details():
             break
 
 main()
-# Main function
-
-
-# Need to include some docstrings
+'''
+Main function. Should pull in all the functions shown above. 
+'''
 
 
 
