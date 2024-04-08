@@ -57,6 +57,8 @@ def main():
         else:
             # Handles Invalid choices.
             print("Invalid choice. Please try again.")
+    # End of funtion
+
             
                 
 def book_a_flight_function():
@@ -115,6 +117,8 @@ def book_a_flight_function():
         print()
         # New line
         break
+    # End of funtion
+
     
 
 def review_booking_function():
@@ -163,6 +167,7 @@ def review_booking_function():
             print("Returning to main menu.")
             break
             # Should take user back to the main menu if they enter 1
+    # End of funtion
 
 
 def manage_passenger_details():
@@ -199,6 +204,7 @@ def manage_passenger_details():
                     print(f"{info:<20}", end="")  
                     # Left-align datflight_data_file_path = os.path.join(current_directory, "flight_data.txt")a with a width of 20 characters
                 print()    
+                # Handle User Input.
             # Stop after finding the matching passenger name
         print()
         # Print line
@@ -220,6 +226,7 @@ def manage_passenger_details():
             print()
             # New line
             break
+    # End of funtion
 
 
 def cancel_user_booking(booking_file_path):
@@ -246,7 +253,8 @@ def cancel_user_booking(booking_file_path):
         else:
             print("Booking cancelled successfully.")
             # Informs the user that their booking has been cancelled. Then returns them to main menu.
-        
+    # End of funtion
+
 
 main()
 '''
