@@ -70,7 +70,7 @@ def main():
             
         elif user_menu_selection == 4:
             cancel_user_booking(booking_file_path)     
-            # Takes user to review their booking.     
+            # Takes user to cancel their booking.     
             
         elif user_menu_selection == 5:
             # Exits program.
@@ -121,21 +121,6 @@ def book_a_flight_function():
             else:
                 print("Please enter a contact number 10 numbers long")
             
-            
-            
-            
-            
-            
-            
-            
-            
-        
-        # def check_available_flights():
-            # TODO make this function work lol
-        # Gonna make this a nested fuction becuase I hate myself. 
-            # with open (flight_data_file_path, 'r') as flight_data_file:
-             #   available_departure_cities = [line.strip().split(',')[1] for line in flight_data_file.readlines()]    
-    
     
         customer_departure_city = input("Please enter the city you wish to travel from: ")
         # TODO check to see that the departure city is valid 
@@ -240,6 +225,7 @@ def manage_passenger_details():
         passenger_name = input("Please enter the name of the passenger: ")
         booking_file_path = os.path.join(current_directory, "bookings.txt")
         booked_passengers = []
+        # Need to declare these variables so that code works okay. 
 
         with open (booking_file_path, 'r') as file:
             next(file)
@@ -260,7 +246,6 @@ def manage_passenger_details():
                 print()  
                 # New line
                 
-                # Print data
                 for info in booking_info:
                     print(f"{info:<20}", end="")  
                     # Left-align datflight_data_file_path = os.path.join(current_directory, "flight_data.txt")a with a width of 20 characters
@@ -268,6 +253,7 @@ def manage_passenger_details():
             # Stop after finding the matching passenger name
             
         print()
+        # Print line
         print("Returning to main menu.")
         # Gonna try using these, while True and break statements to stop the program from exiting prematurely. 
         break
@@ -294,11 +280,12 @@ def cancel_user_booking(booking_file_path):
     '''
     
     found = False
-    
     contact_number_for_cancel = int(input("Please eneter your contact number: "))
+    # Gets a user to enter their contact number to cancel their booking. 
     
     with open (booking_file_path, 'r') as file:
         lines = file.readlines()
+        # Reads the bookings file to see if the user's contact number exist in it.
             
             
             
@@ -308,6 +295,7 @@ def cancel_user_booking(booking_file_path):
             if booking_info[1].strip() == str(contact_number_for_cancel):
                 found = True
                 print("Booking found, cancelling...")
+                # Removes customer's data from booking file if their contact number matches a value in the file.
                 
             else:
                 file.write(line)
@@ -317,6 +305,7 @@ def cancel_user_booking(booking_file_path):
             
         else:
             print("Booking cancelled successfully.")
+            # Informs the user that their booking has been cancelled. Then returns them to main menu.
             
 
 
